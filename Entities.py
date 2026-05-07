@@ -1,7 +1,7 @@
 from random import randint
 
 def random():
-    return randint(0, 10)
+    return randint(40, 70)
 
 class Entity:
     def __init__(self, name, type):
