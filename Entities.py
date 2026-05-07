@@ -1,5 +1,8 @@
 from random import randint
 
+# Randomising value for the quest to be completed,
+# if the value of the player`s 'luck' is higher than
+# the value it means that the quest has to be completed
 def random():
     return randint(40, 70)
 
@@ -11,10 +14,11 @@ class Entity:
         return f'Entity[Name: {self._name}, type: {self._type}]'
 
 class Player(Entity):
-    def __init__(self, name):
+    def __init__(self, name, player_class):
         super().__init__(name, "Player")
+        self._player_class = player_class
     def __repr__(self):
-        return f'Player[Name: {self._name}, type: {self._type}]'
+        return f'Player[Name: {self._name}, type: {self._type}, player class: {self._player_class}]'
 
 class Item(Entity):
     def __init__(self, name):
