@@ -1,6 +1,4 @@
-import Entities
-import logging
-import os
+import os, time, logging, Entities, re
 from datetime import datetime
 from glob import glob
 
@@ -28,9 +26,11 @@ def print_player_classes():
 
 def print_player_classes_description():
     print("1. Archer")
-    print(f"\tYou posses a bow that can hit from a distance. Health: {Entities.Archer.get_health(Entities.Archer(None))}. "
+    print(f"\tYou posses a bow with which you can hit from a distance. Health: {Entities.Archer.get_health(Entities.Archer(None))}. "
           f"Damage: {Entities.Archer.get_damage(Entities.Archer(None))}")
     print("2. Wizard")
+    print(f"\tYou posses a magic wand with which you can hit from a distance. Health: {Entities.Wizard.get_health(Entities.Wizard(None))}. "
+        f"Damage: {Entities.Wizard.get_damage(Entities.Wizard(None))}")
     print("3. Gnome")
     print("4. Ogr")
     print("5. Knight")
@@ -61,17 +61,31 @@ def greeting():
 def separator():
     print("====================================")
 
+def next_thing():
+    if re.match("Yes|yes|aha|Sure|OK|yeah|Yeah", re.sub(" ", "", input("Are you ready to go futher?: "))):
+        return True
+    else:
+        print("Alright, take your time, dear guest of mine")
+        time.sleep(20)
+        return next_thing()
+
 def main():
     log()
     greeting()
+    time.sleep(10)
+    separator()
+    next_thing()
+    separator()
     separator()
     print("Here are the classes that you can play in this game: ")
     print_player_classes()
     print("Each class has its own speciality")
-    player_name = read_player_name()
-    print_player_classes()
-    player_class = read_player_class()
-    player = Entities.Player(player_name, player_class)
-    print(player)
+
+    print_player_classes_description()
+    # player_name = read_player_name()
+    # print_player_classes()
+    # player_class = read_player_class()
+    # player = Entities.Player(player_name, player_class)
+    # print(player)
 
 main()
