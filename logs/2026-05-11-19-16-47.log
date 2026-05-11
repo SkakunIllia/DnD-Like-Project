@@ -1,0 +1,19 @@
+2026-05-11 19:16:47,401 - INFO - Initializing logger
+2026-05-11 19:16:47,401 - INFO - def separator invocation
+2026-05-11 19:16:47,401 - INFO - def separator invocation
+2026-05-11 19:16:47,401 - INFO - def separator invocation
+2026-05-11 19:16:47,401 - INFO - def separator invocation
+2026-05-11 19:16:47,401 - INFO - def separator invocation
+2026-05-11 19:16:47,401 - INFO - def main invocation
+2026-05-11 19:16:47,401 - INFO - def greeting invocation
+2026-05-11 19:16:48,402 - INFO - def next_thing invocation
+2026-05-11 19:16:53,602 - INFO - def next_thing invocation
+2026-05-11 19:16:54,525 - INFO - def read_player_name invocation
+2026-05-11 19:16:55,853 - INFO - def read_player_class invocation
+2026-05-11 19:16:59,722 - INFO - def read_player_name invocation
+2026-05-11 19:17:01,522 - INFO - def read_player_class invocation
+2026-05-11 19:17:03,614 - INFO - def read_player_name invocation
+2026-05-11 19:17:04,538 - INFO - def read_player_class invocation
+2026-05-11 19:17:06,764 - INFO - def next_thing invocation
+2026-05-11 19:17:07,912 - INFO - def next_thing additional time to make decision
+2026-05-11 19:17:09,913 - INFO - def next_thing invocation

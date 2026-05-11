@@ -78,6 +78,9 @@ def logo():
                      |___/""", end = "\n")
     print("=================================================")
 
+def verify_answer(string):
+    return re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", string))
+
 @separator
 def print_player_classes():
     print("Here are the classes that you can play in this game: ")
@@ -137,7 +140,7 @@ def greeting():
 def next_thing():
     @dec_log("def next_thing invocation")
     def internal():
-        if re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", input("Are you ready to go futher?: "))):
+        if verify_answer(input("Are you ready to go futher?: ")):
             return True
         else:
             logger.info("def next_thing additional time to make decision")
@@ -146,15 +149,17 @@ def next_thing():
             return internal()
     return internal()
 
-@separator
-def end_of_start(player):
-    print("Good start so far! Here is your character -> ", end="")
+def class_choice():
+    player_name = read_player_name()
+    player_class = read_player_class()
+    player = Entities.initialize_entity(player_class, player_name)
+    print("Here is your character -> ", end="")
     print(player)
-
-def is_evr_ok():
-    if re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", input("Is that what you wanted? "))):
+    if verify_answer(input("Is that what you wanted? ")):
         print("Alright, then let's start our journey into the world of D&D!")
-    else: pass
+        return player
+    else:
+        return class_choice()
 
 # Global variables:
 delay_time = 1
@@ -170,10 +175,7 @@ def main():
     print_player_classes_description()
     next_thing()
 
-    player_name = read_player_name()
-    player_class = read_player_class()
-    player = Entities.initialize_entity(player_class, player_name)
-    is_evr_ok()
+    class_choice()
 
     next_thing()
 

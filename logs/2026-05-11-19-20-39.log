@@ -1,0 +1,10 @@
+2026-05-11 19:20:39,546 - INFO - Initializing logger
+2026-05-11 19:20:39,546 - INFO - def separator invocation
+2026-05-11 19:20:39,547 - INFO - def separator invocation
+2026-05-11 19:20:39,547 - INFO - def separator invocation
+2026-05-11 19:20:39,547 - INFO - def separator invocation
+2026-05-11 19:20:39,547 - INFO - def main invocation
+2026-05-11 19:20:39,547 - INFO - def greeting invocation
+2026-05-11 19:20:40,548 - INFO - def next_thing invocation
+2026-05-11 19:20:45,106 - INFO - def next_thing invocation
+2026-05-11 19:20:46,164 - INFO - def read_player_name invocation
