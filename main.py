@@ -4,6 +4,9 @@ from glob import glob
 from functools import wraps
 from time import sleep
 
+# Logo
+
+
 # Logger
 
 def log():
@@ -46,6 +49,35 @@ def separator(func):
 
 # Functions:
 
+def logo():
+    print("=================================================", end = "")
+    print(r""" 
+     _                                        
+    | |                                       
+  __| |_   _ _ __   __ _  ___  ___  _ __  ___ 
+ / _` | | | | '_ \ / _` |/ _ \/ _ \| '_ \/ __|
+| (_| | |_| | | | | (_| |  __/ (_) | | | \__ \
+ \__,_|\__,_|_| |_|\__, |\___|\___/|_| |_|___/
+                    __/ |                     
+                   |___/ """, end = "")
+    print(r""" 
+                             _  
+                            | |           
+              __ _ _ __   __| |
+             / _` | '_ \ / _` |
+            | (_| | | | | (_| |
+             \__,_|_| |_|\__,_| """)
+    print(r"""
+         _                             
+        | |                            
+      __| |_ __ __ _  __ _  ___  _ __  ___ 
+     / _` | '__/ _` |/ _` |/ _ \| '_ \/ __|
+    | (_| | | | (_| | (_| | (_) | | | |__ \
+     \__,_|_|  \__,_|\__, |\___/|_| |_|___/
+                      __/ |            
+                     |___/""", end = "\n")
+    print("=================================================")
+
 @separator
 def print_player_classes():
     print("Here are the classes that you can play in this game: ")
@@ -60,20 +92,15 @@ def print_player_classes():
 def print_player_classes_description():
     print("Each class has its own speciality")
     print("1. Archer")
-    print(f"\tYou posses a bow with which you can hit enemies from long distance. Health: {Entities.Archer.get_health(Entities.Archer(None))}. "
-          f"Damage: {Entities.Archer.get_damage(Entities.Archer(None))}")
+    print(f"\tYou posses a bow with which you can hit enemies from long distance. Health: {Entities.Archer.get_health(Entities.Archer(None))}.")
     print("2. Wizard")
-    print(f"\tYou posses a magic wand with which you can hit enemies from long distance. Health: {Entities.Wizard.get_health(Entities.Wizard(None))}. "
-        f"Damage: {Entities.Wizard.get_damage(Entities.Wizard(None))}")
+    print(f"\tYou posses a magic wand with which you can hit enemies from long distance. Health: {Entities.Wizard.get_health(Entities.Wizard(None))}.")
     print("3. Gnome")
-    print(f"\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {Entities.Gnome.get_health(Entities.Gnome(None))}. "
-        f"Damage: {Entities.Gnome.get_damage(Entities.Gnome(None))}")
+    print(f"\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {Entities.Gnome.get_health(Entities.Gnome(None))}.")
     print("4. Ogr")
-    print(f"\tYou posses a mace with which you can hit enemies from medium distance. Health: {Entities.Ogr.get_health(Entities.Ogr(None))}. "
-        f"Damage: {Entities.Ogr.get_damage(Entities.Ogr(None))}")
+    print(f"\tYou posses a mace with which you can hit enemies from medium distance. Health: {Entities.Ogr.get_health(Entities.Ogr(None))}.")
     print("5. Knight")
-    print(f"\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {Entities.Knight.get_health(Entities.Knight(None))}. "
-        f"Damage: {Entities.Knight.get_damage(Entities.Knight(None))}")
+    print(f"\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {Entities.Knight.get_health(Entities.Knight(None))}.")
     sleep(delay_time)
 
 @dec_log("def read_player_name invocation")
@@ -84,7 +111,6 @@ def read_player_name():
     return player_name
 
 @dec_log("def read_player_class invocation")
-@separator
 def read_player_class():
     try:
         while not (player_class := int(input("What class do you want to play? (Enter a number) "))):
@@ -120,6 +146,15 @@ def next_thing():
             return internal()
     return internal()
 
+@separator
+def end_of_start(player):
+    print("Good start so far! Here is your character -> ", end="")
+    print(player)
+
+def is_evr_ok():
+    if re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", input("Is that what you wanted? "))):
+        print("Alright, then let's start our journey into the world of D&D!")
+    else: pass
 
 # Global variables:
 delay_time = 1
@@ -127,6 +162,7 @@ delay_time = 1
 
 @dec_log("def main invocation")
 def main():
+    logo()
     greeting()
     next_thing()
 
@@ -137,7 +173,8 @@ def main():
     player_name = read_player_name()
     player_class = read_player_class()
     player = Entities.initialize_entity(player_class, player_name)
-    print(player)
-    # next_thing()
+    is_evr_ok()
+
+    next_thing()
 
 main()

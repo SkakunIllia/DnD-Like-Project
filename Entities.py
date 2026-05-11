@@ -1,6 +1,5 @@
 from random import randint
 
-
 # Randomising value for the quest to be completed,
 # if the value of the player's 'luck' is higher than
 # the value it means that the quest has to be completed
@@ -34,6 +33,16 @@ class Player(Entity):
         self._items = []
         self._health = 100
         self._weapon = None
+    def attack(self, obj):
+        if random() < 30:
+            self._health -= randint(10, 25)
+        obj.set_health(obj.get_health() - self.get_weapon().get_damage())
+    def go_next_room(self):
+        pass
+    def look_for_smth(self):
+        pass
+    def complete_quest(self, quest):
+        pass
     def __repr__(self):
         return f'Player[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
     def set_health(self, health):
@@ -46,80 +55,92 @@ class Player(Entity):
         return self._items
     def get_player_class(self):
         return self._player_class
+    def get_weapon(self):
+        return self._weapon
 
+#===================================================================================
 class Archer(Player):
     def __init__(self, name):
         super().__init__(name, "Archer")
-        self.set_items([Item("Relict bow", 65, 10)])
+        self.set_items([])
         self.set_health(80)
-        self._damage = 15
-        self._weapon = self._items[0]
+        self._weapon = Item("Relict bow", 65, 10)
     def __repr__(self):
         return f'Archer[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
-    def get_damage(self):
-        return self._damage
 
 class Knight(Player):
     def __init__(self, name):
         super().__init__(name, "Knight")
         self.set_health(120)
-        self.set_items([Item("Silver sword", 45, 13)])
-        self._damage = 20
-        self._weapon = self._items[0]
+        self.set_items([])
+        self._weapon = Item("Silver sword", 45, 13)
     def __repr__(self):
-        return f'Knight[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
-    def get_damage(self):
-        return self._damage
+        return f'Knight[Name: {self._name}, health: {self._health}, weapon: {self._weapon}]'
 
 class Ogr(Player):
     def __init__(self, name):
         super().__init__(name, "Ogr")
         self.set_health(150)
-        self.set_items([Item("Greeny mace", 80, 7)])
-        self._damage = 30
-        self._weapon = self._items[0]
+        self.set_items([])
+        self._weapon = Item("Greeny mace", 80, 7)
     def __repr__(self):
         return f'Ogr[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
-    def get_damage(self):
-        return self._damage
 
 class Gnome(Player):
     def __init__(self, name):
         super().__init__(name, "Gnome")
         self.set_health(100)
-        self.set_items([Item("Gold pickaxe", 50, 7)])
-        self._damage = 20
-        self._weapon = self._items[0]
+        self.set_items([])
+        self._weapon = [Item("Gold pickaxe", 50, 7)]
     def __repr__(self):
         return f'Gnome[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
-    def get_damage(self):
-        return self._damage
 
 class Wizard(Player):
     def __init__(self, name):
         super().__init__(name, "Wizard")
         self.set_health(80)
-        self.set_items([Item("Magical wand", 60, 15)])
-        self._damage = 10
-        self._weapon = self._items[0]
+        self.set_items([])
+        self._weapon = Item("Magical wand", 60, 15)
     def __repr__(self):
         return f'Gnome[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
+
+#===================================================================================
+class Mob(Player):
+    def __init__(self, name, player_class):
+        super().__init__(name, player_class)
+        self.set_health(randint(70, 150))
+        self._damage = random()
+    def __repr__(self):
+        return f'Mob[Name: {self._name}, damage: {self._damage}, health: {self.get_health()}]'
     def get_damage(self):
         return self._damage
+    def set_damage(self, damage):
+        self._damage = damage
 
 #===================================================================================
 class Item(Entity):
     def __init__(self, name, damage = 0, durability = 0):
         super().__init__(name)
-        self._durability = durability
         self._damage = damage
     def __repr__(self):
-        return f'Item[Name: {self._name}]'
+        return f'Item[Name: {self._name}, damage: {self._damage}]'
+    def get_damage(self):
+        return self._damage
 
 #===================================================================================
 class Quest:
     def __init__(self, name):
         self._name = name
         self._random_value = random()
+        self._desc = (
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at odio eu urna accumsan dapibus vitae vel massa.\n"
+            "Mauris a venenatis arcu. Phasellus pulvinar neque et tellus fringilla dignissim. Vestibulum in justo turpis. Morbi\n"
+            "faucibus, sapien eu mollis aliquet, enim dolor scelerisque arcu, id ultrices purus leo vitae augue. Morbi feugiat nec nulla vel\n"
+            "bibendum. Sed sagittis ullamcorper nisi, sed cursus velit fermentum non. Nullam ac tempus mi, in dignissim ante. Sed at tincidunt justo,\n"
+            "et accumsan erat. Curabitur eu tellus a neque elementum rhoncus vel eu lorem. Sed vulputate mauris mi, non mollis neque tincidunt eget.\n"
+            "Quisque vel turpis sodales erat dictum ultrices at at lectus. Sed quis auctor diam. Donec in lectus id odio tempus tempor non a odio.\n"
+            "Proin odio massa, varius aliquam tempor sit amet, consectetur sit amet quam.")
+    def desc(self):
+        print(self._desc)
     def __repr__(self):
         return f'Item[Name: {self._name}, random value: {self._random_value}]'
