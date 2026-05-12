@@ -58,7 +58,7 @@ class Archer(Player):
         super().__init__(name, "Archer")
         self.set_items([])
         self.set_health(80)
-        self._weapon = Item("Relict bow", 65, 10, "Weapon")
+        self._weapon = Item("Relict bow", 65, "Weapon")
     def __repr__(self):
         return f'Archer[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
@@ -67,7 +67,7 @@ class Knight(Player):
         super().__init__(name, "Knight")
         self.set_health(120)
         self.set_items([])
-        self._weapon = Item("Silver sword", 45, 13, "Weapon")
+        self._weapon = Item("Silver sword", 45, "Weapon")
     def __repr__(self):
         return f'Knight[Name: {self._name}, health: {self._health}, weapon: {self._weapon}]'
 
@@ -76,7 +76,7 @@ class Ogr(Player):
         super().__init__(name, "Ogr")
         self.set_health(150)
         self.set_items([])
-        self._weapon = Item("Greeny mace", 80, 7, "Weapon")
+        self._weapon = Item("Greeny mace", 80, "Weapon")
     def __repr__(self):
         return f'Ogr[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
@@ -85,7 +85,7 @@ class Gnome(Player):
         super().__init__(name, "Gnome")
         self.set_health(100)
         self.set_items([])
-        self._weapon = Item("Gold pickaxe", 50, 7, "Weapon")
+        self._weapon = Item("Gold pickaxe", 50, "Weapon")
     def __repr__(self):
         return f'Gnome[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
@@ -94,7 +94,7 @@ class Wizard(Player):
         super().__init__(name, "Wizard")
         self.set_health(80)
         self.set_items([])
-        self._weapon = Item("Magical wand", 60, 15, "Weapon")
+        self._weapon = Item("Magical wand", 60, "Weapon")
     def __repr__(self):
         return f'Wizard[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
@@ -113,7 +113,7 @@ class Mob(Player):
 
 #===================================================================================
 class Item(Entity):
-    def __init__(self, name, damage = 0, durability = 0, type_of_item ="Item"):
+    def __init__(self, name, damage = 0, type_of_item ="Item"):
         super().__init__(name)
         self._damage = damage
         self._type = type_of_item
@@ -127,8 +127,9 @@ class Item(Entity):
         self._type = type_of_item
 
 #===================================================================================
+# Locations and Location-Quests
 class Location:
-    def __init__(self, name = "Location", desc = "Lorem ipsum dolor sit amet"):
+    def __init__(self, name = "Location", desc = "Lorem ipsum"):
         self._name = name
         self._random_value = random()
         self._desc = desc
@@ -137,10 +138,18 @@ class Location:
         return self._desc
     def set_desc(self, desc):
         self._desc = desc
-    def complete(self, luck):
+    def print_desc(self):
         print(self._desc)
-        if luck < self._random_value:
-            return False
-        return True
     def __repr__(self):
         return f'Quest[Name: {self._name}, luck to complete: {self._random_value}]'
+
+mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
+
+class QuestLocation(Location):
+    def __init__(self, name, desc = "Lorem ipsum"):
+        super().__init__(name, desc)
+        self._mobs = [
+            Mob(mob_names[randint(0, len(mob_names))]) for _ in range(randint(1, 3))]
+    @staticmethod
+    def complete(self, luck, predicate):
+        return predicate(luck)

@@ -1,9 +1,10 @@
-import os, logging, Entities, re
+import os, logging
+from re import sub, match
 from datetime import datetime
 from glob import glob
 from functools import wraps
 from time import sleep
-from random import shuffle
+from Entities import *
 
 # Logo
 
@@ -42,7 +43,7 @@ def dlog(message = ""):
                     logger.debug(f"def {name} - {message}")
                 res = func(*args, **kwargs)
                 return res
-            except:
+            except Exception:
                 logger.exception(f"At {name} occurred some unexpected error")
         return wrapper
     return dec
@@ -91,7 +92,7 @@ def logo():
 
 @dlog("verifying whether the answer is positive")
 def verify_answer(string):
-    return re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", string))
+    return match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", sub(" ", "", string))
 
 @separator
 @dlog("printing classes")
@@ -109,15 +110,15 @@ def print_player_classes():
 def print_player_classes_description():
     print("Each class has its own speciality")
     print("1. Archer")
-    print(f"\tYou posses a bow with which you can hit enemies from long distance. Health: {Entities.Archer.get_health(Entities.Archer(None))}.")
+    print(f"\tYou posses a bow with which you can hit enemies from long distance. Health: {Archer.get_health(Archer(None))}.")
     print("2. Wizard")
-    print(f"\tYou posses a magic wand with which you can hit enemies from long distance. Health: {Entities.Wizard.get_health(Entities.Wizard(None))}.")
+    print(f"\tYou posses a magic wand with which you can hit enemies from long distance. Health: {Wizard.get_health(Wizard(None))}.")
     print("3. Gnome")
-    print(f"\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {Entities.Gnome.get_health(Entities.Gnome(None))}.")
+    print(f"\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {Gnome.get_health(Gnome(None))}.")
     print("4. Ogr")
-    print(f"\tYou posses a mace with which you can hit enemies from medium distance. Health: {Entities.Ogr.get_health(Entities.Ogr(None))}.")
+    print(f"\tYou posses a mace with which you can hit enemies from medium distance. Health: {Ogr.get_health(Ogr(None))}.")
     print("5. Knight")
-    print(f"\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {Entities.Knight.get_health(Entities.Knight(None))}.")
+    print(f"\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {Knight.get_health(Knight(None))}.")
     sleep(delay_time)
 
 @separator
@@ -172,7 +173,7 @@ def class_choice():
     player_name = read_player_name()
     player_class = read_player_class()
     logger.debug("def class_choice - initializing player")
-    player = Entities.initialize_entity(player_class, player_name)
+    player = initialize_entity(player_class, player_name)
     print("Here is your character -> ", end="")
     print(player)
     if verify_answer(input("Is that what you wanted? ")):
@@ -183,6 +184,19 @@ def class_choice():
         logger.debug("def class_choice - rechoosing the class or the name")
         return class_choice()
 
+@dlog("getting player's option to the quest")
+def quest_get_option():
+    try:
+        while not (option := int(input("Which option would you like to pick? (Enter an integer) "))):
+            logger.debug(f"def quest_get_option - null option")
+            continue
+        if not ( 1 <= option <= 3):
+            logger.debug(f"def quest_get_option - improper option")
+            raise ValueError("Wrong option. Usage: 1 <= player_class <= 3")
+        return option
+    except ValueError:
+        return quest_get_option()
+
 # Global variables:
 delay_time = 1
 
@@ -191,24 +205,33 @@ def main():
     # logo()
     # greeting()
     # next_thing()
-    #
+    # #
     # print_player_classes()
     # print_player_classes_description()
     # next_thing()
 
-    player = class_choice()
-
-    ## mobs = [Entities.Mob("Zombie" if i % 2 == 0 else "Piglin" if i % 3 == 0 else "Human") for i in range(10)]
-    ## shuffle(mobs)
-
-    ## quests = [Entities.Quest(f"Quest {i}") for i in range(10)]
-    ## print(quests)
-    ## while len(quests) > 0:
-    ##     quest = quests[0]
-    ##     quest_complete(quest, player)
-    ##     quests.pop(0)
-    ## print("end")
+    # player = class_choice()
 
     # next_thing()
+
+    main_location1 = Location("Main location",
+        "My dear friend, you have appeared to be brave enough to get here.\n"
+        "Our journey starts from here, my lovely guest - from a cold campfire.\n"
+        "You are going towards to new adventures and you have already discovered \n"
+        "the first one. There is the cave, but you are not really sure what is \n"
+        "in there. You feel interested about discovering it, but also strangely \n"
+        "confused of the cave. You are trying to approach it carefully...\n")
+    quest1 = QuestLocation("The Cave",
+    '\n"It is dark here and I here somebody there, deep in the cave", \n'
+        "you say. You think of a few ways of coping with it:\n"
+        "\t1. You can ignore the cave and go ahead the road near the cave.\n"
+        "\t2. Nevertheless you are not aware of what is inside the cave, but \n"
+        "\tif you sneak inside, take all the valuable and get out of there?\n"
+        "\t3. Because there might be something that is very dangerous and you\n"
+        "\tmight start the fight with the mobs\n")
+    main_location1.print_desc()
+    quest1.print_desc()
+    option = quest_get_option()
+    print(option)
 
 main()
