@@ -37,12 +37,12 @@ class Player(Entity):
         if random() < 30:
             self._health -= randint(10, 25)
         obj.set_health(obj.get_health() - self.get_weapon().get_damage())
-    def go_next_room(self):
-        pass
-    def look_for_smth(self):
-        pass
-    def complete_quest(self, quest):
-        pass
+    # def go_next_room(self):
+    #     pass
+    # def look_for_smth(self):
+    #     pass
+    # def complete_quest(self, quest):
+    #     pass
     def __repr__(self):
         return f'Player[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
     def set_health(self, health):
@@ -102,7 +102,7 @@ class Wizard(Player):
         self.set_items([])
         self._weapon = Item("Magical wand", 60, 15)
     def __repr__(self):
-        return f'Gnome[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
+        return f'Wizard[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
 #===================================================================================
 class Mob(Player):

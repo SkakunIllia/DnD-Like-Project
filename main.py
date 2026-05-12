@@ -23,23 +23,30 @@ def log():
     log_path = os.path.join(log_dir, date_now)
     logging.basicConfig(level = logging.DEBUG, filename = log_path, filemode = "w", format = "%(asctime)s - %(levelname)s - %(message)s")
     logger = logging.getLogger("Logger")
-    logger.info("Initializing logger")
+    logger.debug("Initializing logger")
     return logger
 
 logger = log()
 
 # Decorators:
 
-def dec_log(message):
+def dlog(message = ""):
     def dec(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            logger.info(message)
-            return func(*args, **kwargs)
+            name = func.__name__
+            logger.debug(f"def {name} - invocation")
+            try:
+                if message != "":
+                    logger.debug(f"def {name} - {message}")
+                res = func(*args, **kwargs)
+                return res
+            except:
+                logger.exception(f"At {name} occurred some unexpected error")
         return wrapper
     return dec
 
-@dec_log("def separator invocation")
+@dlog()
 def separator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -49,8 +56,10 @@ def separator(func):
 
 # Functions:
 
+@dlog("printing the logo's separator")
 def logo():
     print("=================================================", end = "")
+    logger.debug("def logo - printing the logo")
     print(r""" 
      _                                        
     | |                                       
@@ -76,12 +85,15 @@ def logo():
      \__,_|_|  \__,_|\__, |\___/|_| |_|___/
                       __/ |            
                      |___/""", end = "\n")
+    logger.debug("def logo - printing the logo's separator")
     print("=================================================")
 
+@dlog("verifying whether the answer is positive")
 def verify_answer(string):
     return re.match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", re.sub(" ", "", string))
 
 @separator
+@dlog("printing classes")
 def print_player_classes():
     print("Here are the classes that you can play in this game: ")
     print("1. Archer")
@@ -92,6 +104,7 @@ def print_player_classes():
     sleep(delay_time)
 
 @separator
+@dlog("printing classes description")
 def print_player_classes_description():
     print("Each class has its own speciality")
     print("1. Archer")
@@ -106,25 +119,28 @@ def print_player_classes_description():
     print(f"\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {Entities.Knight.get_health(Entities.Knight(None))}.")
     sleep(delay_time)
 
-@dec_log("def read_player_name invocation")
 @separator
+@dlog("reading player's name")
 def read_player_name():
     while (player_name := input("What is your name? ")) == "":
+        logger.debug(f"def read_player_name - null name")
         continue
     return player_name
 
-@dec_log("def read_player_class invocation")
+@dlog("reading player's class")
 def read_player_class():
     try:
         while not (player_class := int(input("What class do you want to play? (Enter a number) "))):
+            logger.debug(f"def read_player_class - null class")
             continue
         if not ( 1 <= player_class <= 5):
+            logger.debug(f"def read_player_class - improper class")
             raise ValueError("Wrong player_class. Usage: 1 <= player_class <= 5")
         return player_class
     except ValueError:
         return read_player_class()
 
-@dec_log("def greeting invocation")
+@dlog("greeting the player")
 def greeting():
     print("Welcome to the game of D&D Light")
     print("The concept of the game is the same as in the D&D")
@@ -138,45 +154,53 @@ def greeting():
 
 @separator
 def next_thing():
-    @dec_log("def next_thing invocation")
+    @dlog("are we going forward?")
     def internal():
-        if verify_answer(input("Are you ready to go futher?: ")):
+        if verify_answer(input("Are you ready to go further?: ")):
+            logger.debug(f"def next_thing - we are going forward")
             return True
         else:
-            logger.info("def next_thing additional time to make decision")
+            logger.debug("def next_thing - additional time to make decision")
             print("Alright, take your time, dear guest of mine")
             sleep(2)
             return internal()
     return internal()
 
+@dlog("choosing class")
 def class_choice():
     player_name = read_player_name()
     player_class = read_player_class()
+    logger.debug("def class_choice - initializing player")
     player = Entities.initialize_entity(player_class, player_name)
     print("Here is your character -> ", end="")
     print(player)
     if verify_answer(input("Is that what you wanted? ")):
-        print("Alright, then let's start our journey into the world of D&D!")
+        logger.debug("def class_choice - going to the game itself")
+        print("Alright, then let's start our journey into the world of D&D Light!")
         return player
     else:
+        logger.debug("def class_choice - rechoosing the class or the name")
         return class_choice()
+
 
 # Global variables:
 delay_time = 1
 
 
-@dec_log("def main invocation")
+@dlog("def main invocation")
 def main():
-    logo()
-    greeting()
-    next_thing()
+    # logo()
+    # greeting()
+    # next_thing()
+    #
+    # print_player_classes()
+    # print_player_classes_description()
+    # next_thing()
 
-    print_player_classes()
-    print_player_classes_description()
-    next_thing()
+    player = class_choice()
+    # while True:
+        
 
-    class_choice()
-
-    next_thing()
+    # next_thing()
 
 main()
