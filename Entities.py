@@ -105,17 +105,17 @@ class Wizard(Player):
         return f'Wizard[Name: {self._name}, health: {self._health}, items: {self._items}, weapon: {self._weapon}]'
 
 #===================================================================================
-class Mob(Player):
-    def __init__(self, name):
-        super().__init__(name, "Mob")
-        self.set_health(randint(70, 150))
-        self._damage = random()
-    def __repr__(self):
-        return f'Mob[Name: {self._name}, damage: {self._damage}, health: {self.get_health()}]'
-    def get_damage(self):
-        return self._damage
-    def set_damage(self, damage):
-        self._damage = damage
+# class Mob(Player):
+#     def __init__(self, name):
+#         super().__init__(name, "Mob")
+#         self.set_health(randint(70, 150))
+#         self._damage = random()
+#     def __repr__(self):
+#         return f'Mob[Name: {self._name}, damage: {self._damage}, health: {self.get_health()}]'
+#     def get_damage(self):
+#         return self._damage
+#     def set_damage(self, damage):
+#         self._damage = damage
 
 #===================================================================================
 class Item(Entity):
@@ -129,10 +129,10 @@ class Item(Entity):
 
 #===================================================================================
 class Quest:
-    def __init__(self, name):
+    def __init__(self, name, desc = "Lorem ipsum dolor sit amet"):
         self._name = name
         self._random_value = random()
-        self._desc = "Lorem ipsum dolor sit amet"
+        self._desc = desc
     def get_desc(self):
         print(self._desc)
         return self._desc
@@ -144,4 +144,4 @@ class Quest:
             return False
         return True
     def __repr__(self):
-        return f'Quest[Name: {self._name}, luck value to complete: {self._random_value}]'
+        return f'Quest[Name: {self._name}, luck to complete: {self._random_value}]'

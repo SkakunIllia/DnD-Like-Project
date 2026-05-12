@@ -192,7 +192,18 @@ def quest_complete(q, player):
 
 # Global variables:
 delay_time = 1
-
+quest_descriptions = [
+    "Gather 5 glowing mushrooms for the alchemist while avoiding wild boars.",
+    "Catch a brazen giant rat that has locked itself inside the wine cellar.",
+    "Find a regular dwarf's lost pickaxe in the upper shafts and fend off kobold scouts.",
+    "Clear the beach of aggressive sand crabs that are stopping fishermen from launching their boats.",
+    "Help the blacksmith fan the bellows while he forges a vital order for the town guard.",
+    "Lay to rest an unlucky skeleton stuck in the graveyard fence that is scaring passersby.",
+    "Drive away a flock of hungry harpies huddling around the mail box on the mountain pass.",
+    "Pull a merchant's stuck wagon wheel out of the thick muck before mire-lurkers arrive.",
+    "Track down a petty thief in the market who snatched a purse from a visiting merchant.",
+    "Decipher an ancient inscription on a tower ruin while dodging stray magical sparks."
+]
 
 @dlog()
 def main():
