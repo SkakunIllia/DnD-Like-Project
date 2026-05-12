@@ -125,31 +125,3 @@ class Item(Entity):
         return self._type
     def set_type(self, type_of_item):
         self._type = type_of_item
-
-#===================================================================================
-# Locations and Location-Quests
-class Location:
-    def __init__(self, name = "Location", desc = "Lorem ipsum"):
-        self._name = name
-        self._random_value = random()
-        self._desc = desc
-    def get_desc(self):
-        print(self._desc)
-        return self._desc
-    def set_desc(self, desc):
-        self._desc = desc
-    def print_desc(self):
-        print(self._desc)
-    def __repr__(self):
-        return f'Quest[Name: {self._name}, luck to complete: {self._random_value}]'
-
-mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
-
-class QuestLocation(Location):
-    def __init__(self, name, desc = "Lorem ipsum"):
-        super().__init__(name, desc)
-        self._mobs = [
-            Mob(mob_names[randint(0, len(mob_names))]) for _ in range(randint(1, 3))]
-    @staticmethod
-    def complete(self, luck, predicate):
-        return predicate(luck)

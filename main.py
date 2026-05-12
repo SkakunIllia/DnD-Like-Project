@@ -5,6 +5,7 @@ from glob import glob
 from functools import wraps
 from time import sleep
 from Entities import *
+from LocationAndQuests import *
 
 # Logo
 
@@ -197,6 +198,11 @@ def quest_get_option():
     except ValueError:
         return quest_get_option()
 
+
+@dlog()
+def quest_complete(luck, predicate):
+    return predicate(luck)
+
 # Global variables:
 delay_time = 1
 
@@ -214,24 +220,16 @@ def main():
 
     # next_thing()
 
-    main_location1 = Location("Main location",
-        "My dear friend, you have appeared to be brave enough to get here.\n"
-        "Our journey starts from here, my lovely guest - from a cold campfire.\n"
-        "You are going towards to new adventures and you have already discovered \n"
-        "the first one. There is the cave, but you are not really sure what is \n"
-        "in there. You feel interested about discovering it, but also strangely \n"
-        "confused of the cave. You are trying to approach it carefully...\n")
-    quest1 = QuestLocation("The Cave",
-    '\n"It is dark here and I here somebody there, deep in the cave", \n'
-        "you say. You think of a few ways of coping with it:\n"
-        "\t1. You can ignore the cave and go ahead the road near the cave.\n"
-        "\t2. Nevertheless you are not aware of what is inside the cave, but \n"
-        "\tif you sneak inside, take all the valuable and get out of there?\n"
-        "\t3. Because there might be something that is very dangerous and you\n"
-        "\tmight start the fight with the mobs\n")
-    main_location1.print_desc()
-    quest1.print_desc()
-    option = quest_get_option()
-    print(option)
+    game = gen_desc_main_location()
+    quests_desc = gen_desc_quests()
+    for i in game:
+        main_location = Location("Main location", i)
+        quest = QuestLocation("Quest location", next(quests_desc))
+        main_location.print_desc()
+        quest.print_desc()
+        option = quest_get_option()
+        res = is_successful(option)
+        print(res)
+
 
 main()
