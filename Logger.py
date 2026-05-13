@@ -4,7 +4,6 @@ from glob import glob
 from functools import wraps
 
 # Logger
-
 def log():
     path = "logs/*.log"
     files = glob(path)
@@ -22,10 +21,10 @@ def log():
     logger.debug("Initializing logger")
     return logger
 
+# Global variables:
 logger = log()
 
 # Decorators:
-
 def dlog(message = ""):
     def dec(func):
         @wraps(func)

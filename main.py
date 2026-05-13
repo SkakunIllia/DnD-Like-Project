@@ -15,7 +15,6 @@ def main():
 
     next_thing()
 
-    game = gen_desc_main_location()
-    quests_desc = gen_desc_quests()
+    game()
 
 main()

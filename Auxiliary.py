@@ -4,6 +4,9 @@ from Logger import dlog, logger
 from time import sleep
 from random import randint
 
+# Global variables:
+delay_time = 10
+
 # Logo
 @dlog("printing the logo's separator")
 def logo():
@@ -46,12 +49,10 @@ def separator(func):
         return func(*args, **kwargs)
     return wrapper
 
-# Global variables:
-delay_time = 10
-
 # Randomising value for the quest to be completed,
 # if the value of the player's 'luck' is higher than
 # the value it means that the quest has to be completed
+@dlog()
 def random():
     return randint(randint(10, 20), randint(50, 70))
 
@@ -60,6 +61,7 @@ def random():
 def verify_answer(string):
     return match("Yes|yes|aha|Sure|OK|yeah|Yeah|y|Y|yep|Yep", sub(" ", "", string))
 
+@dlog
 @separator
 def next_thing():
     @dlog("are we going forward?")

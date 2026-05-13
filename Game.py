@@ -1,39 +1,7 @@
 from Entities import *
+
 #===================================================================================
-# Locations and Location-Quests
-class Location:
-    def __init__(self, name = "Location", desc = "Lorem ipsum"):
-        self._name = name
-        self._random_value = random()
-        self._desc = desc
-    def get_desc(self):
-        print(self._desc)
-        return self._desc
-    def set_desc(self, desc):
-        self._desc = desc
-    def print_desc(self):
-        print(self._desc)
-    def __repr__(self):
-        return f'Location[Name: {self._name}, luck to complete: {self._random_value}]'
-
-mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
-
-def quest1(desc):
-    pass
-
-@dlog("getting player's option to the quest")
-def quest_get_option():
-    try:
-        while not (option := int(input("Which option would you like to pick? (Enter an integer) "))):
-            logger.debug(f"def quest_get_option - null option")
-            continue
-        if not (1 <= option <= 3):
-            logger.debug(f"def quest_get_option - improper option")
-            raise ValueError("Wrong option. Usage: 1 <= player_class <= 3")
-        return option
-    except ValueError:
-        return quest_get_option()
-
+# Generators
 def gen_desc_main_location():
     dsc = [("My dear friend, you have appeared to be brave enough to get here.\n"
             "Our journey starts from here, my lovely guest - from a cold campfire.\n"
@@ -61,22 +29,71 @@ def gen_desc_quests():
         index += 1
         yield res
 
+#===================================================================================
+# Locations and Location-Quests
+class Location:
+    def __init__(self, name = "Location", desc = "Lorem ipsum"):
+        self._name = name
+        self._random_value = random()
+        self._desc = desc
+    def get_desc(self):
+        print(self._desc)
+        return self._desc
+    def set_desc(self, desc):
+        self._desc = desc
+    def print_desc(self):
+        print(self._desc)
+    def __repr__(self):
+        return f'Location[Name: {self._name}, luck to complete: {self._random_value}]'
+
+#===================================================================================
+# Global variables
+mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
+
+#===================================================================================
+# Functions
+@dlog
+@separator
+def game():
+    pass
+
+@dlog
+@separator
+def end_of_game():
+    pass
+
+@dlog
+@separator
+def quest1(desc):
+    print(desc)
+
+@dlog
+@separator
+def quest2(desc):
+    pass
+
+@dlog("getting player's option to the quest")
+def quest_get_option():
+    try:
+        while not (option := int(input("Which option would you like to pick? (Enter an integer) "))):
+            logger.debug(f"def quest_get_option - null option")
+            continue
+        if not (1 <= option <= 3):
+            logger.debug(f"def quest_get_option - improper option")
+            raise ValueError("Wrong option. Usage: 1 <= player_class <= 3")
+        return option
+    except ValueError:
+        return quest_get_option()
+
 @dlog
 def quest_complete(luck, predicate):
     return predicate(luck)
 
 @dlog
-def is_successful(option):
+def quest_is_successful(option):
     if option == 1:
         return quest_complete(random(), lambda x: x > 0)
     elif option == 2:
         return quest_complete(random(), lambda x: x > 60)
     else:
         return quest_complete(random(), lambda x: x > 40)
-
-
-
-
-@dlog()
-def quest_complete(luck, predicate):
-    return predicate(luck)
