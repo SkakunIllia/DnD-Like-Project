@@ -154,8 +154,9 @@ def main_location1():
 def game(player):
     try:
         main_location1()
-        quest1(player)
         next_thing()
+        quest1(player)
+        # next_thing()
         end_of_game()
         input()
     except DeathException:
