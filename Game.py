@@ -154,7 +154,7 @@ load_ingame_progres = load(None)
 ingame_progress = load_ingame_progres if ((load_ingame_progres is not None) and (load_ingame_progres > 0)) else 0
 main_locations_desc = gen_desc_main_locations()
 
-bin_file = 0
+bin_file_to_extraction = 1
 
 #===================================================================================
 # Main game function
@@ -167,7 +167,7 @@ def game(player):
             location(player)
             next_thing()
         end_of_game()
-        if bin_file: input()
+        if bin_file_to_extraction: input()
     except DeathException:
         death()
 

@@ -56,7 +56,6 @@ def logo():
       *          .              *                .
     """)
     logger.debug("def logo - printing the logo's separator")
-    sleep(delay_time)
     print("=================================================")
 
 # Separator
