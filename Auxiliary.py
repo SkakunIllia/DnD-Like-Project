@@ -5,8 +5,8 @@ from time import sleep
 from random import randint
 
 # Global variables:
-delay_time = 10
-delay_time_quest = 4
+delay_time = 1
+delay_time_quest = 1
 
 # Logo
 @dlog("printing the logo's separator")

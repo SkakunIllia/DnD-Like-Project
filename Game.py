@@ -165,6 +165,9 @@ def game(player):
             if i < ingame_progress:
                 continue
             location(player)
+            if (i + 1) % 2 == 0:
+                if verify_answer(input("Would you like to save your ingame progress? ")):
+                    save(player)
             next_thing()
         end_of_game()
         if bin_file_to_extraction: input()

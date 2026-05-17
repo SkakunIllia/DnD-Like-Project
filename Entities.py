@@ -23,7 +23,7 @@ class Item:
         self._name = name
         self._type = type_of_item
     def __repr__(self):
-        return f'Item[Name: {self._name}, type: {self._type}]'
+        return f'Item(name = "{self._name}")'
     def get_type(self):
         return self._type
     def get_name(self):

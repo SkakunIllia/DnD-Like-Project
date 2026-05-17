@@ -35,7 +35,7 @@ def serialize(player):
     obj = {
         "name": player.get_name(),
         "class": player.get_player_class(),
-        "items": player.get_items(),
+        "items": [str(item) for item in player.get_items()],
         "health": player.get_health(),
         "weapon": player.get_weapon().serialize(),
         "progress": player.get_progress()
@@ -46,4 +46,10 @@ def serialize(player):
 @dlog()
 def load(save_file):
     pass
+
+    # with open("saves/save1.json", "r") as file:
+    #     obj = json.load(file)
+    # print(obj)
+    # item = eval(obj["items"][0])
+    # print(item)
     # to be continued
