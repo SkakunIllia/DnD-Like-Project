@@ -32,6 +32,11 @@ class Item:
         self._name = name
     def set_type(self, type_of_item):
         self._type = type_of_item
+    def serialize(self):
+        return {
+            "name": self.get_name(),
+            "type_of_item": self.get_type()
+        }
 
 class Weapon(Item):
     def __init__(self, name, damage, type_of_item="Weapon"):
@@ -40,11 +45,9 @@ class Weapon(Item):
     def __repr__(self):
         return f'{self._name}, damage: {self._damage}'
     def serialize(self):
-        return {
-            "name": self.get_name(),
-            "damage": self.get_damage(),
-            "type_of_item": "Weapon"
-        }
+        dct = super().serialize()
+        dct["damage"] = self.get_damage()
+        return dct
     def get_damage(self):
         return self._damage
 
@@ -95,6 +98,15 @@ class Player(Entity):
         self._progress = progress
     def add_item(self, item):
         self._items.append(item)
+    def serialize(self):
+        return {
+        "name": self.get_name(),
+        "class": self.get_player_class(),
+        "items": [item.serialize() for item in self.get_items()],
+        "health": self.get_health(),
+        "weapon": self.get_weapon().serialize(),
+        "progress": self.get_progress()
+    }
 
 #===================================================================================
 # Player's classes

@@ -12,9 +12,9 @@ def save(player):
         nonlocal save_dir, player
         path = save_title + ".json"
         save_file = os.path.join(save_dir, path)
-        obj = serialize(player)
+        obj = player.serialize()
         with open(save_file, "wt") as file:
-            json.dump(obj, file, indent=4)
+            json.dump(obj, file, indent = 4)
 
 
     if not os.path.exists(save_dir):
@@ -29,18 +29,6 @@ def save(player):
             internal()
         else: save(player)
     else: internal()
-
-@dlog()
-def serialize(player):
-    obj = {
-        "name": player.get_name(),
-        "class": player.get_player_class(),
-        "items": [str(item) for item in player.get_items()],
-        "health": player.get_health(),
-        "weapon": player.get_weapon().serialize(),
-        "progress": player.get_progress()
-    }
-    return obj
 
 # Save Loader
 @dlog()
