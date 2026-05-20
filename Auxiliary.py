@@ -94,7 +94,7 @@ def verify_answer(string: str) -> bool|None:
 @dlog()
 def language() -> None:
     print("Choose a language:")
-    print("""1. English\t2. Polski\t3. Русский\t4. Державна""")
+    print("""1. English\t2. Polski\t3. Русский\t4. Державна\t5. НАДПОТУЖНА ДЕРЖАВНА""")
     input("Enter a number: ")
 
 @separator
