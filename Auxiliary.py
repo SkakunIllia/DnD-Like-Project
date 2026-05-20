@@ -3,6 +3,7 @@ from re import match, sub
 from Logger import dlog, logs
 from time import sleep
 from random import randint
+from Dialogues import languages
 
 # Global variables:
 delay_time = 1

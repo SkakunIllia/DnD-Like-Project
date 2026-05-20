@@ -1,6 +1,7 @@
 from Entities import *
 from Saver import *
 import DeathException
+from Dialogues import languages
 
 #===================================================================================
 # Generators
