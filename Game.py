@@ -5,32 +5,10 @@ from Localizations import languages
 
 #===================================================================================
 # Generators
-def gen_desc_main_locations():
-    dsc = [("My dear friend, you have appeared to be brave enough to get here.\n"
-            "Our journey starts from here, my lovely guest - from a cold campfire.\n"
-            "You are going towards to new adventures and you have already discovered \n"
-            "the first one. There is the cave, but you are not really sure what is \n"
-            "in there. You feel interested about discovering it, but also strangely \n"
-            "confused of the cave. You are trying to approach it carefully...")]
-    index = 0
-    while index < len(dsc):
-        res = dsc[index]
-        index += 1
-        yield res
-
-def gen_desc_quests():
-    dsc = [("\"It is dark here and I hear somebody there, deep in the cave\", \n"
-        "you say. You think of a few ways of coping with it:\n"
-        "\t1. You can ignore the cave and go ahead the road near the cave.\n"
-        "\t2. Nevertheless you are not aware of what is inside the cave, but \n"
-        "\tif you sneak inside, take all the valuable and get out of there?\n"
-        "\t3. Because there might be something that is very dangerous and you\n"
-        "\tmight start the fight with the mobs")]
-    index = 0
-    while index < len(dsc):
-        res = dsc[index]
-        index += 1
-        yield res
+def gen_mob():
+    mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
+    while True:
+        yield Mob(mob_names[randint(0, len(mob_names) - 1)])
 
 #===================================================================================
 # Functions
@@ -38,7 +16,7 @@ def gen_desc_quests():
 @dlog("getting player's option to the quest")
 def quest_get_option():
     try:
-        while not (option := int(input("Which option would you like to pick? (Enter a number from a list above) "))):
+        while not (option := int(input(languages[lang]["quest_get_option"]))):
             logs(quest_get_option, 1, "null option")
             continue
         if not (1 <= option <= 3):
@@ -67,9 +45,8 @@ def quest_is_successful(option):
 @dlog()
 @separator
 def quest1(player):
-    print("QUEST 1")
-    desc = next(quest_desc)
-    print(desc)
+    print(languages[lang]["quest1"][0])
+    print(languages[lang]["quest1"][1]["desc"])
     sleep_delay(delay_time - 1)
     option = quest_get_option()
     is_successful = quest_is_successful(option)
@@ -79,59 +56,53 @@ def quest1(player):
     def fight():
         sleep_delay(delay_time_quest)
         logs(fight, 1, "the player has started the fight")
-        mobs = [
-            Mob(
-                mob_names[randint(0, len(mob_names) - 1)]
-                for _ in range(4)
-            )
-        ]
+        mobs = [next(gmob) for _ in range(3)]
         for i, mob in enumerate(mobs):
             sleep_delay(delay_time_quest)
             logs(fight, 2, f"player attack the mob {i}")
             player.attack(mob)
             if player.get_health() < 0:
                 logs(fight, 2, "player has died")
-                print("Unfortunately you have been killed")
+                print(languages[lang]["quest1"][1]["fight"]["kill"])
                 raise DeathException
         sleep_delay(delay_time_quest)
         logs(fight, 2, "player has won the fight")
-        print("It was tough, but you have perfectly fought and won the battle of the Cave")
+        print(languages[lang]["quest1"][1]["fight"]["success"])
         player.add_item(Item("Diamond"))
         end_of_quest()
 
     def end_of_quest():
         sleep_delay(delay_time_quest)
         logs(end_of_quest, 2, "the player is outside the cave")
-        print("\nNow you are outside the cave and going further the road."
-              "\nIt is dark outside so you decided to rest for a little bit")
+
+        print(languages[lang]["quest1"][1]["end_of_quest"]["1"])
         sleep_delay(delay_time_quest)
-        print("\nYou look at yourself in a river as in the mirror and wonder about this magical effect...")
+        print(languages[lang]["quest1"][1]["end_of_quest"]["2"])
         print(player)
         sleep_delay(delay_time)
 
     if option == 1:
         logs(quest1, 2, "the player leaves the quest")
-        print("Well, sometimes it is better to omit possible problem.\nNevertheless you don't get the prize")
+        print(languages[lang]["quest1"][1]["options"]["1"])
     elif option == 2:
         logs(quest1, 2, "the player tries to sneak into the cave")
         if is_successful:
             sleep_delay(delay_time_quest)
             logs(quest1, 2, "the player sneaked into the cave successfully")
-            print(
-                "Heeeah! You got inside sneakily and found "
-                "there something really interesting")
+            print(languages[lang]["quest1"][1]["options"]["2"]["successful"])
+
             player.add(Item("Diamond"))
         else:
             logs(quest1, 2, "the player has been noticed while sneaking into the cave")
-            print("You have been noticed while sneaking into the cave.\nThe fight has started")
+            print(languages[lang]["quest1"][1]["options"]["2"]["fail"])
             fight()
     elif option == 3:
         if is_successful:
-            print("You have started really cruel fight with the monsters")
+            print(languages[lang]["quest1"][1]["options"]["3"]["successful"])
             fight()
         else:
             logs(quest1, 2, "the player has died in a fight")
-            print("There were two giant zombies that, unfortunately, killed you...")
+            print(languages[lang]["quest1"][1]["options"]["3"]["fail"])
             raise DeathException
 
 @separator
@@ -142,18 +113,16 @@ def quest2(player):
 @separator
 @dlog()
 def main_location1(player):
-    desc = next(main_locations_desc)
-    print(desc)
+    print(languages[lang]["main_locations"][0])
     sleep_delay(delay_time)
 
 #===================================================================================
 # Global variables
-mob_names = ["Zombie", "Skeleton", "Ogr", "Giant"]
-quest_desc = gen_desc_quests()
-game_quests = (main_location1, quest1)
+
 load_ingame_progres = load(None)
 ingame_progress = load_ingame_progres if ((load_ingame_progres is not None) and (load_ingame_progres > 0)) else 0
-main_locations_desc = gen_desc_main_locations()
+game_quests = [main_location1, quest1]
+gmob = gen_mob()
 
 bin_file_to_extraction = 0
 
@@ -167,7 +136,7 @@ def game(player):
                 continue
             location(player)
             if (i + 1) % 2 == 0:
-                if verify_answer(input("Would you like to save your ingame progress? ")):
+                if verify_answer(input(languages[lang]["game_save"])):
                     save(player)
             next_thing()
         end_of_game()
@@ -190,5 +159,5 @@ def end_of_game():
 @separator
 @dlog()
 def death():
-    print("Unfortunately you have been killed")
+    print(languages[lang]["death"])
     end_of_game()

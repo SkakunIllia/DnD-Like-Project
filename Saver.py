@@ -6,7 +6,7 @@ from Localizations import languages
 # Save Creater
 @dlog()
 def save(player):
-    save_title = input("How would you like to name the save file? ")
+    save_title = input(languages[lang]["saver_save"])
     save_dir = "saves"
 
     def internal():
@@ -24,8 +24,8 @@ def save(player):
     path_save = "saves/*.json"
     files = glob(path_save)
     if "saves/" + save_title + ".json" in files:
-        print("The file with this name already exists")
-        res = verify_answer(input("Do you want to override the save file? "))
+        print(languages[lang]["saver_save"])
+        res = verify_answer(input(languages[lang]["savefile_exists"]))
         if res:
             internal()
         else: save(player)
