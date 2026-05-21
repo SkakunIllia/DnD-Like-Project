@@ -4,7 +4,6 @@ from GameStart import *
 @dlog()
 def main():
     logo()
-    language()
     greeting()
     #
     print_player_classes()

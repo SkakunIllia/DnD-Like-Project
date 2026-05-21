@@ -69,15 +69,15 @@ languages = {
 
         "print_player_classes_description": ("У каждого персонажа своя особенность\n"
                                              "1. Archer\n"
-                                             "\tТы владеешь луком, из которого можешь поражать врагов с большого расстояния. Здоровье: {hp_arch}\n"
+                                             "\tТы владеешь луком, из которого можешь поражать врагов с большого расстояния. Здоровье: {}\n"
                                              "2. Wizard\n"
-                                             "\tТы владеешь волшебной палочкой, из которой можешь поражать врагов с большого расстояния. Здоровье: {hp_wiz}\n"
+                                             "\tТы владеешь волшебной палочкой, из которой можешь поражать врагов с большого расстояния. Здоровье: {}\n"
                                              "3. Gnome\n"
-                                             "\tТы владеешь золотой киркой, которой можешь поражать врагов с короткого расстояния. Здоровье: {hp_gn}\n"
+                                             "\tТы владеешь золотой киркой, которой можешь поражать врагов с короткого расстояния. Здоровье: {}\n"
                                              "4. Ogre\n"
-                                             "\tТы владеешь булавой, которой можешь поражать врагов со среднего расстояния. Здоровье: {hp_og}\n"
+                                             "\tТы владеешь булавой, которой можешь поражать врагов со среднего расстояния. Здоровье: {}\n"
                                              "5. Knight\n"
-                                             "\tТы владеешь серебряным мечом, которым можешь поражать врагов с короткого расстояния. Здоровье: {hp_kn}\n"),
+                                             "\tТы владеешь серебряным мечом, которым можешь поражать врагов с короткого расстояния. Здоровье: {}\n"),
 
         "read_player_name": "Как тебя зовут, дорогой мой друг? ",
         "read_player_class": "Каким персонажем ты хочешь играть? (Введи номер из списка выше) ",
@@ -158,15 +158,15 @@ languages = {
 
         "print_player_classes_description": ("У кожного персонажа є своя особливість\n"
                                              "1. Archer\n"
-                                             "\tТи володієш луком, з якого можеш уражати ворогів з великої відстані. Здоров'я: {hp_arch}\n"
+                                             "\tТи володієш луком, з якого можеш уражати ворогів з великої відстані. Здоров'я: {}\n"
                                              "2. Wizard\n"
-                                             "\tТи володієш чарівною паличкою, з якої можеш уражати ворогів з великої відстані. Здоров'я: {hp_wiz}\n"
+                                             "\tТи володієш чарівною паличкою, з якої можеш уражати ворогів з великої відстані. Здоров'я: {}\n"
                                              "3. Gnome\n"
-                                             "\tТи володієш золотою киркою, якою можеш уражати ворогів з короткої відстані. Здоров'я: {hp_gn}\n"
+                                             "\tТи володієш золотою киркою, якою можеш уражати ворогів з короткої відстані. Здоров'я: {}\n"
                                              "4. Ogre\n"
-                                             "\tТи володієш булавою, якою можеш уражати ворогів з середньої відстані. Здоров'я: {hp_og}\n"
+                                             "\tТи володієш булавою, якою можеш уражати ворогів з середньої відстані. Здоров'я: {}\n"
                                              "5. Knight\n"
-                                             "\tТи володієш срібним мечем, яким можеш уражати ворогів з короткої відстані. Здоров'я: {hp_kn}\n"),
+                                             "\tТи володієш срібним мечем, яким можеш уражати ворогів з короткої відстані. Здоров'я: {}\n"),
 
         "read_player_name": "Як тебе звати? ",
         "read_player_class": "Яким персонажем ти хочеш грати? (Введи номер зі списку вище) ",
@@ -241,19 +241,19 @@ languages = {
                                  "\t2. Wizard\n"
                                  "\t3. Gnome\n"
                                  "\t4. Ogre\n"
-                                 "\t5. Knight\n"),
+                                 "\t5. Knight"),
 
         "print_player_classes_description": ("Each character has its own speciality\n"
                                              "1. Archer\n"
-                                             "\tYou posses a bow with which you can hit enemies from long distance. Health: {hp_arch}\n"
+                                             "\tYou posses a bow with which you can hit enemies from long distance. Health: {}\n"
                                              "2. Wizard\n"
-                                             "\tYou posses a magic wand with which you can hit enemies from long distance. Health: {hp_wiz}\n"
+                                             "\tYou posses a magic wand with which you can hit enemies from long distance. Health: {}\n"
                                              "3. Gnome\n"
-                                             "\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {hp_gn}\n"
+                                             "\tYou posses a golden pickaxe with which you can hit enemies from short distance. Health: {}\n"
                                              "4. Ogre\n"
-                                             "\tYou posses a mace with which you can hit enemies from medium distance. Health: {hp_og}\n"
+                                             "\tYou posses a mace with which you can hit enemies from medium distance. Health: {}\n"
                                              "5. Knight\n"
-                                             "\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {hp_kn}\n"),
+                                             "\tYou posses a silver sword  with which you can hit enemies from short distance. Health: {}\n"),
 
         "read_player_name": "What is your name? ",
         "read_player_class": "What class do you want to play? (Enter a number from a list above) ",
@@ -335,15 +335,15 @@ languages = {
 
         "print_player_classes_description": ("Każda postać ma swoją specjalność\n"
                                              "1. Archer\n"
-                                             "\tPosiadasz łuk, z którego możesz trafiać wrogów z dużej odległości. Zdrowie: {hp_arch}\n"
+                                             "\tPosiadasz łuk, z którego możesz trafiać wrogów z dużej odległości. Zdrowie: {}\n"
                                              "2. Wizard\n"
-                                             "\tPosiadasz magiczną różdżkę, z której możesz trafiać wrogów z dużej odległości. Zdrowie: {hp_wiz}\n"
+                                             "\tPosiadasz magiczną różdżkę, z której możesz trafiać wrogów z dużej odległości. Zdrowie: {}\n"
                                              "3. Gnome\n"
-                                             "\tPosiadasz złoty kilof, którym możesz trafiać wrogów z bliskiej odległości. Zdrowie: {hp_gn}\n"
+                                             "\tPosiadasz złoty kilof, którym możesz trafiać wrogów z bliskiej odległości. Zdrowie: {}\n"
                                              "4. Ogre\n"
-                                             "\tPosiadasz maczugę, którą możesz trafiać wrogów ze średniej odległości. Zdrowie: {hp_og}\n"
+                                             "\tPosiadasz maczugę, którą możesz trafiać wrogów ze średniej odległości. Zdrowie: {}\n"
                                              "5. Knight\n"
-                                             "\tPosiadasz srebrny miecz, którym możesz trafiać wrogów z bliskiej odległości. Zdrowie: {hp_kn}\n"),
+                                             "\tPosiadasz srebrny miecz, którym możesz trafiać wrogów z bliskiej odległości. Zdrowie: {}\n"),
 
         "read_player_name": "Jak masz na imię? ",
         "read_player_class": "Którą klasą chcesz grać? (Wprowadź numer z listy powyżej) ",
@@ -424,15 +424,15 @@ languages = {
 
             "print_player_classes_description": ("У КОЖНОГО ПЕРСОНАЖА ПОТУЖНО Є СВОЯ ОСОБЛИВІСТЬ\n"
                                                  "1. ARCHER\n"
-                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЛУКОМ, З ЯКОГО ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З ВЕЛИКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {hp_arch}\n"
+                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЛУКОМ, З ЯКОГО ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З ВЕЛИКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {}\n"
                                                  "2. WIZARD\n"
-                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЧАРІВНОЮ ПАЛИЧКОЮ, З ЯКОЇ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З ВЕЛИКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {hp_wiz}\n"
+                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЧАРІВНОЮ ПАЛИЧКОЮ, З ЯКОЇ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З ВЕЛИКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {}\n"
                                                  "3. GNOME\n"
-                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЗОЛОТОЮ КИРКОЮ, ЯКОЮ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З КОРОТКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {hp_gn}\n"
+                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ ЗОЛОТОЮ КИРКОЮ, ЯКОЮ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З КОРОТКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {}\n"
                                                  "4. OGRE\n"
-                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ БУЛАВОЮ, ЯКОЮ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З СЕРЕДНЬОЇ ВІДСТАНІ. ЗДОРОВ'Я: {hp_og}\n"
+                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ БУЛАВОЮ, ЯКОЮ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З СЕРЕДНЬОЇ ВІДСТАНІ. ЗДОРОВ'Я: {}\n"
                                                  "5. KNIGHT\n"
-                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ СРІБНИМ МЕЧЕМ, ЯКИМ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З КОРОТКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {hp_kn}\n"),
+                                                 "\tТИ ПОТУЖНО ВОЛОДІЄШ СРІБНИМ МЕЧЕМ, ЯКИМ ПОТУЖНО МОЖЕШ ПОТУЖНО УРАЖАТИ ВОРОГІВ З КОРОТКОЇ ВІДСТАНІ. ЗДОРОВ'Я: {}\n"),
 
             "read_player_name": "ЯК ТЕБЕ ПОТУЖНО ЗВАТЬ? ",
             "read_player_class": "ЯКИМ КЛАСОМ ТИ ПОТУЖНО ХОЧЕШ ПОТУЖНО ГРАТИ? (ВВЕДИ НОМЕР ЗІ СПИСКУ ВИЩЕ) ",

@@ -1,7 +1,7 @@
 import json, os
 from Logger import *
 from Auxiliary import *
-from Dialogues import languages
+from Localizations import languages
 
 # Save Creater
 @dlog()
