@@ -1,6 +1,6 @@
 from Entities import *
 from Saver import *
-import DeathException
+from DeathException import DeathException
 from Localizations import languages
 
 #===================================================================================
@@ -56,7 +56,8 @@ def quest1(player):
     def fight():
         sleep_delay(delay_time_quest)
         logs(fight, 1, "the player has started the fight")
-        mobs = [next(gmob) for _ in range(3)]
+        mob_counter = 3
+        mobs = [next(gmob) for _ in range(mob_counter)]
         for i, mob in enumerate(mobs):
             sleep_delay(delay_time_quest)
             logs(fight, 2, f"player attack the mob {i}")
@@ -130,12 +131,13 @@ bin_file_to_extraction = 0
 # Main game function
 @dlog()
 def game(player):
+    hp = player.get_health()
     try:
         for i, location in enumerate(game_quests):
             if i < ingame_progress:
                 continue
             location(player)
-            if (i + 1) % 2 == 0:
+            if hp > 0 and (i + 1) % 2 == 0:
                 if verify_answer(input(languages[lang]["game_save"])):
                     save(player)
             next_thing()
@@ -147,6 +149,7 @@ def game(player):
 @separator
 @dlog()
 def end_of_game():
+    sleep_delay(delay_time_quest)
     print(r"""
   _____ _    _ ______   ______ _   _ _____  
  |_   _| |  | |  ____| |  ____| \ | |  __ \ 
@@ -156,8 +159,6 @@ def end_of_game():
    |_| |_|  |_|______| |______|_| \_|_____/
  """)
 
-@separator
 @dlog()
 def death():
-    print(languages[lang]["death"])
     end_of_game()
