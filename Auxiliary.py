@@ -74,7 +74,7 @@ def language() -> str|None:
                 case 2: return "pl"
                 case 3: return "ru"
                 case 4: return "ua"
-                case 5: return "ua++"
+                case 5: return "ua_to_delete"
         except ValueError:
             return internal()
     return internal()

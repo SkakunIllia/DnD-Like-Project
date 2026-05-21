@@ -11,6 +11,7 @@ def log():
 
     path = "logs/*.log"
     files = glob(path)
+    files.sort(key = lambda x: x[0:len(x) - 5:1])
     if len(files) >= 5:
         os.remove(files[0])
 

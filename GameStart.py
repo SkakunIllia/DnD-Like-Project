@@ -2,8 +2,6 @@ from Entities import *
 from Auxiliary import *
 from Localizations import languages
 
-print(lang)
-
 @dlog("greeting the player")
 def greeting():
     print(languages[lang]["greeting"])
