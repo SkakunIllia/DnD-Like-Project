@@ -13,8 +13,30 @@ def initialize_entity(player_class, player_name):
         case _: return Player(player_name, "Entity")
 
 @dlog()
-def initialize_from_load(json_object):
-    pass
+def initialize_from_load(obj):
+    def internal(player, obj):
+        items = obj["items"]
+        for item in items:
+            player.add_item(Item(item["name"]))
+        player.set_weapon(Weapon(name=obj["weapon"]["name"], damage=obj["weapon"]["damage"]))
+        return player
+
+    match obj["class"]:
+        case "Archer":
+            player = Archer(name = obj["name"], health = obj["health"], progress = obj["progress"])
+            return internal(player, obj)
+        case "Wizard":
+            player = Wizard(name = obj["name"], health = obj["health"], progress = obj["progress"])
+            return internal(player, obj)
+        case "Gnome":
+            player = Gnome(name = obj["name"], health = obj["health"], progress = obj["progress"])
+            return internal(player, obj)
+        case "Ogre":
+            player = Ogre(name = obj["name"], health = obj["health"], progress = obj["progress"])
+            return internal(player, obj)
+        case "Knight":
+            player = Knight(obj["name"], obj["health"], obj["progress"])
+            return internal(player, obj)
 
 #===================================================================================
 # Items and weapons
@@ -57,7 +79,7 @@ class Entity:
     def __init__(self, name):
         self._name = name
     def __repr__(self):
-        return f'Entity[Name: {self._name}]'
+        return f'{self._name}'
     def set_name(self, name):
         self._name = name
     def get_name(self):
@@ -92,6 +114,8 @@ class Player(Entity):
         return self._player_class
     def get_weapon(self):
         return self._weapon
+    def set_weapon(self, weapon):
+        self._weapon = weapon
     def get_progress(self):
         return self._progress
     def set_progress(self, progress):

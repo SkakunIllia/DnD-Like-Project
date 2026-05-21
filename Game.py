@@ -92,7 +92,7 @@ def quest1(player):
             logs(quest1, 2, "the player sneaked into the cave successfully")
             print(languages[lang]["quest1"][1]["options"]["2"]["successful"])
 
-            player.add(Item("Diamond"))
+            player.add_item(Item("Diamond"))
         else:
             logs(quest1, 2, "the player has been noticed while sneaking into the cave")
             print(languages[lang]["quest1"][1]["options"]["2"]["fail"])
@@ -109,20 +109,34 @@ def quest1(player):
 @separator
 @dlog()
 def quest2(player):
-    pass
+    print("quest2")
+
+@separator
+@dlog()
+def quest3(player):
+    print("quest3")
 
 @separator
 @dlog()
 def main_location1(player):
+    player.set_progress(player.get_progress() + 2)
     print(languages[lang]["main_locations"][0])
     sleep_delay(delay_time)
 
+@separator
+@dlog()
+def main_location2(player):
+    player.set_progress(player.get_progress() + 2)
+    print("main2")
+
+@separator
+@dlog()
+def main_location3(player):
+    player.set_progress(player.get_progress() + 2)
+    print("main3")
 #===================================================================================
 # Global variables
-
-load_ingame_progres = load(None)
-ingame_progress = load_ingame_progres if ((load_ingame_progres is not None) and (load_ingame_progres > 0)) else 0
-game_quests = [main_location1, quest1]
+game_quests = [main_location1, quest1, main_location2, quest2, main_location3, quest3]
 gmob = gen_mob()
 
 bin_file_to_extraction = 0
@@ -132,12 +146,14 @@ bin_file_to_extraction = 0
 @dlog()
 def game(player):
     hp = player.get_health()
+    ingame_progress = player.get_progress()
     try:
         for i, location in enumerate(game_quests):
             if i < ingame_progress:
                 continue
             location(player)
             if hp > 0 and (i + 1) % 2 == 0:
+                player.set_health(player.get_health() + 25)
                 if verify_answer(input(languages[lang]["game_save"])):
                     save(player)
             next_thing()

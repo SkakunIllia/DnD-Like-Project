@@ -49,6 +49,8 @@ languages = {
                 }
             }
         ),
+        "do_you_want_to_load": "Ты хочешь загрузить одно из сохранений? ",
+        "load": "Какое сохранение ты хочешь загрузить? ",
         "game_save": "Хочешь ли ты сохранить свой игровой прогресс? (Y/N) ",
         "saver_save": "Как бы ты хотел назвать файл сохранения? ",
         "savefile_exists": "Ты хочешь перезаписать файл сохранения? ",
@@ -138,6 +140,8 @@ languages = {
                 }
             },
         ),
+        "do_you_want_to_load": "Чи хочеш ти завантажити одне зі збережень? ",
+        "load": "Яке збереження ти хочеш завантажити? ",
         "game_save": "Чи хочеш ти зберегти свій ігровий прогрес? (Y/N) ",
         "saver_save": "Як би ти хотів назвати файл збереження? ",
         "savefile_exists": "Чи хочеш ти перезаписати файл збереження? ",
@@ -225,6 +229,8 @@ languages = {
                 }
             },
         ),
+        "do_you_want_to_load": "Do you want to load one of the saves? ",
+        "load": "Which save would you like to load ",
         "game_save": "Would you like to save your ingame progress? (Y/N) ",
         "saver_save": "How would you like to name the save file? ",
         "savefile_exists": "Do you want to override the save file? ",
@@ -315,6 +321,8 @@ languages = {
                 }
             },
         ),
+        "do_you_want_to_load": "Czy chcesz wczytać jeden z zapisów gry? ",
+        "load": "Który zapis gry chcesz wczytać? ",
         "game_save": "Czy chciałbyś zapisać swój postęp w grze? (Y/N) ",
         "saver_save": "Jak chciałbyś nazwać plik zapisu? ",
         "savefile_exists": "Czy chcesz nadpisać plik zapisu? ",
@@ -403,6 +411,8 @@ languages = {
                 }
             },
         ),
+        "do_you_want_to_load": "ЧИ ПОТУЖНО ХОЧЕШ ТИ ПОТУЖНО ЗАВАНТАЖИТИ ОДНЕ ЗІ ЗБЕРЕЖЕНЬ? ",
+        "load": "ЯКЕ ЗБЕРЕЖЕННЯ ТИ ПОТУЖНО ХОЧЕШ ПОТУЖНО ЗАВАНТАЖИТИ? ",
         "game_save": "ЧИ ПОТУЖНО ХОЧЕШ ТИ ПОТУЖНО ЗБЕРЕГТИ СВІЙ ІГРОВИЙ ПРОГРЕС? (Y/N) ",
         "saver_save": "ЯК БИ ТИ ПОТУЖНО ХОТІВ ПОТУЖНО НАЗВАТИ ФАЙЛ ЗБЕРЕЖЕННЯ? ",
         "savefile_exists": "ЧИ ПОТУЖНО ХОЧЕШ ТИ ПОТУЖНО ПЕРЕЗАПИСАТИ ФАЙЛ ЗБЕРЕЖЕННЯ? ",

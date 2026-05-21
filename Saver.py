@@ -1,7 +1,9 @@
-import json, os
+import json
+
 from Logger import *
 from Auxiliary import *
 from Localizations import languages
+from Entities import initialize_from_load
 
 # Save Creater
 @dlog()
@@ -24,7 +26,6 @@ def save(player):
     path_save = "saves/*.json"
     files = glob(path_save)
     if "saves/" + save_title + ".json" in files:
-        print(languages[lang]["saver_save"])
         res = verify_answer(input(languages[lang]["savefile_exists"]))
         if res:
             internal()
@@ -33,12 +34,27 @@ def save(player):
 
 # Save Loader
 @dlog()
-def load(save_file):
-    pass
+def load():
+    def internal():
+        try:
+            while not (answer := int(input(languages[lang]["load"]))):
+                continue
+            nonlocal files
+            if 1 <= answer < len(files) + 1:
+                return answer - 1
+            raise Exception
+        except Exception:
+            return internal()
 
-    # with open("saves/save1.json", "r") as file:
-    #     obj = json.load(file)
-    # print(obj)
-    # item = eval(obj["items"][0])
-    # print(item)
-    # to be continued
+    path_save = "saves/*.json"
+    files = glob(path_save)
+    if len(files) > 0:
+        if verify_answer(input(languages[lang]["do_you_want_to_load"])):
+            for i, file in enumerate(files):
+                print(f"\t{i + 1}. {file}")
+            answer = internal()
+            file = files[answer]
+
+            with open(file, "r") as file:
+                obj = json.load(file)
+            return initialize_from_load(obj)
