@@ -1,21 +1,24 @@
+# "А конкретнее - алмаз",
+# "Начался бой. К оружию!")
+
 languages = {
     "ru": {
         "gen_desc_main_locations": [("Мой дорогой друг, ты оказался достаточно храбр, чтобы добраться сюда.\n"
                                      "Наше путешествие начинается отсюда, мой дорогой гость — от холодного костра.\n"
                                      "Ты идешь навстречу новым приключениям и уже обнаружил \n"
                                      "первое из них. Перед тобой пещера, но ты не совсем уверен, что \n"
-                                     "находится внутри. Тебе интересно исследовать её, но в то же время ты странно \n"
-                                     "озадачен этой пещерой. Ты пытаешься подойти к ней осторожно...")],
+                                     "находится внутри. Тебе интересно исследовать её, но в то же время ты несколько \n"
+                                     "озадачен этой пещерой. Ты пытаешься осторожно подойти к ней...")],
 
         "gen_desc_quests": [("\"Здесь темно, и я слышу кого-то там, глубоко в пещере\", \n"
-                             "— говоришь ты. Ты думаешь о нескольких способах справиться с этим:\n"
+                             "— говоришь ты. Ты думаешь о нескольких способах разрешить эту ситуацию:\n"
                              "\t1. Ты можешь проигнорировать пещеру и пойти дальше по дороге рядом с ней.\n"
                              "\t2. Тем не менее, ты не знаешь, что внутри пещеры, но \n"
-                             "\tчто если прокрасться внутрь, забрать всё ценное и выбраться оттуда?\n"
-                             "\t3. Потому что там может быть что-то очень опасное, и ты \n"
-                             "\tможешь начать бой с мобами")],
+                             "\tчто если тайком прокрасться внутрь, забрать всё ценное и выбраться оттуда?\n"
+                             "\t3. Там может быть что-то очень опасное, а значит ты \n"
+                             "\tможешь начать бой с этим...")],
 
-        "quest_get_option": "Какую опцию ты хочешь выбрать? (Введи номер из списка выше) ",
+        "quest_get_option": "Какая опция ближе к вашей душе, милорд? (Введи номер из списка выше) ",
 
         "quest1": (
             "КВЕСТ 1",
@@ -28,18 +31,21 @@ languages = {
                 "end_of_quest": {
                     "1": "\nТеперь ты снаружи пещеры и идешь дальше по дороге."
                          "\nНа улице темно, поэтому ты решил немного отдохнуть",
-                    "2": "\nТы смотришь на себя в реку, как в зеркало, и удивляешься этому магическому эффекту...",
+                    "2": "\nТы смотришь на себя в реку, как в зеркало, и удивляешься этому загадочному эффекту...",
                 },
 
                 "options": {
-                    "1": "Ну, иногда лучше избежать возможной проблемы.\nТем не менее, ты не получаешь приз",
+                    "1": ("Что ж, иногда бывает лучше избежать возможной проблемы.\n"
+                         "Тем не менее, ты не получаешь приз"),
                     "2": {
-                        "successful": "Хе-е-ей! Ты пробрался внутрь незаметно и нашел там кое-что действительно интересное",
-                        "fail": "Тебя заметили, пока ты пробирался в пещеру.\nБой начался"
+                        "successful": "Ююююхххууу! Ты пробрался внутрь незаметно и нашел там кое-что действительно интересное\n"
+                                      "А конкретнее - алмаз",
+                        "fail": ("Пока ты пробирался в пещеру тебя заметили.\n"
+                                "Начался бой. К оружию, воин!")
                     },
                     "3": {
-                        "successful": "Ты начал действительно жестокую битву с монстрами",
-                        "fail": "Там было два гигантских зомби, которые, к сожалению, убили тебя..."
+                        "successful": "Жестокая битва с монстрами началась, приготовся, юный воин",
+                        "fail": "К сожалению тебя убили. Ты встертился с двумя гигантскими зомби..."
                     }
                 }
             }
@@ -50,16 +56,16 @@ languages = {
         "greeting": ("Добро пожаловать в игру D&D Light\n"
                      "Концепция игры такая же, как и в D&D\n"
                      "Игра состоит из некоторого количества квестов, которые тебе нужно выполнить\n"
-                     "Затем ты переходишь на стадию босса, и это всё\n"
+                     "Или ты можешь их проспустить и насладится вечерной игрой, как в старые-добрые времена\n"
                      "Довольно просто, не так ли?\n"
                      "Так что давай попробуем эту игру!"),
 
-        "print_player_classes": ("Вот классы, за которые ты можешь играть в этой игре:\n"
-                                 "1. Archer\n"
-                                 "2. Wizard\n"
-                                 "3. Gnome\n"
-                                 "4. Ogre\n"
-                                 "5. Knight\n"),
+        "print_player_classes": ("Вот и персонажи, за которых ты можешь играть в этой игре:\n"
+                                 "\t1. Archer\n"
+                                 "\t2. Wizard\n"
+                                 "\t3. Gnome\n"
+                                 "\t4. Ogre\n"
+                                 "\t5. Knight\n"),
 
         "print_player_classes_description": ("У каждого персонажа своя особенность\n"
                                              "1. Archer\n"
@@ -73,12 +79,12 @@ languages = {
                                              "5. Knight\n"
                                              "\tТы владеешь серебряным мечом, которым можешь поражать врагов с короткого расстояния. Здоровье: {hp_kn}\n"),
 
-        "read_player_name": "Как тебя зовут? ",
-        "read_player_class": "Каким классом ты хочешь играть? (Введи номер из списка выше) ",
+        "read_player_name": "Как тебя зовут, дорогой мой друг? ",
+        "read_player_class": "Каким персонажем ты хочешь играть? (Введи номер из списка выше) ",
         "class_choice": {
             "character": "Вот твой персонаж -> ",
             "accept_or_not?": "Это то, чего ты хотел? (Y/N) ",
-            "not_accept": "\nХорошо, тогда давай начнем наше путешествие в мир D&D Light!"
+            "accept": "\nХорошо, тогда давай начнем наше путешествие в мир D&D Light!"
         },
 
         "next_thing": {
@@ -89,26 +95,26 @@ languages = {
     "ua": {
         "gen_desc_main_locations": [("Мій дорогий друже, ти виявився досить хоробрим, щоб дістатися сюди.\n"
                                      "Наша подорож починається звідси, мій любий гостю — від холодного багаття.\n"
-                                     "Ти йдеш назустріч новим пригодам і вже виявив \n"
-                                     "першу з них. Перед тобою печера, но ти не зовсім упевнений, що \n"
-                                     "всередині. Тобі цікаво дослідити її, але водночас ти дивно \n"
-                                     "занепокоєний цією печерою. Тобі намагаєшся підійти до неї обережно...")],
+                                     "Ти йдеш назустріч новим пригодам і вже побачив \n"
+                                     "першу з них. Перед тобою печера, але ти не зовсім впевнений, що \n"
+                                     "всередині. Тобі цікаво дослідити її, але водночас ти трішки \n"
+                                     "занепокоєний цією печерою. Ті намагаєшся обережно підійти до неї...")],
 
         "gen_desc_quests": [("\"Тут темно, і я чую когось там, глибоко в печері\", \n"
-                             "— кажеш ти. Ти думаєш про кілька способів впоратися з цим:\n"
+                             "— кажеш ти. Ти думаєш про кілька способів впоратися з цією ситуацією:\n"
                              "\t1. Ти можеш проігнорувати печеру і піти далі дорогою поруч із нею.\n"
-                             "\t2. Менше з тим, ти не знаєш, що всередині печери, але \n"
-                             "\tщо якщо прокрастися всередину, забрати все цінне і вибратися звідти?\n"
-                             "\t3. Тому що там може бути щось дуже небезпечне, і ти \n"
-                             "\tможеш почати бій з мобами")],
+                             "\t2. Добре, ти не знаєш, що всередині печери, але \n"
+                             "\tякщо прокрастися всередину, забрати все цінне і забратися звідти тихенько?\n"
+                             "\t3. Там може бути щось дуже небезпечне, і ти \n"
+                             "\tможеш почати бій з цим...")],
 
-        "quest_get_option": "Яку опцію ти хочеш обрати? (Введи номер зі списку вище) ",
+        "quest_get_option": "Яку опцію ви забажаєте обрати, мілорд? (Введи номер зі списку вище) ",
 
         "quest1": (
             "КВЕСТ 1",
             {
                 "fight": {
-                    "kill": "На жаль, тебе було вбито",
+                    "kill": "На жаль, тебе вбили",
                     "success": "Це було важко, але ти чудово бився і виграв битву за Печеру"
                 },
 
@@ -119,34 +125,36 @@ languages = {
                 },
 
                 "options": {
-                    "1": "Ну, іноді краще уникнути можливої проблеми.\nПроте ти не отримуєш приз",
+                    "1": "Ну що, іноді краще уникнути можливої проблеми.\nПроте ти не отримуєш приз",
                     "2": {
-                        "successful": "Хе-е-ей! Ти пробрався всередину непомітно і знайшов там дещо дійсно цікаве",
-                        "fail": "Тебе помітили, поки ти пробирався до печери.\nБій розпочався"
+                        "successful": "Хе-е-ей! Ти пробрався всередину непомітно і знайшов там дещо дійсно цікаве"
+                                      "А точніше - алмаз",
+                        "fail": "Тебе помітили, поки ти пробирався до печери.\n"
+                                "Розпочався бій. До зброї, воїне!"
                     },
                     "3": {
                         "successful": "Ти розпочав дійсно жорстоку битву з монстрами",
-                        "fail": "Там було два гігантських зомбі, які, на жаль, убили тебе..."
+                        "fail": "Там було два гігантських зомбі, які, на жаль, вбили тебе..."
                     }
                 }
             },
         ),
         "game_save": "Чи хочеш ти зберегти свій ігровий прогрес? ",
         "saver_save": "Як би ти хотів назвати файл збереження? ",
-        "death": "На жаль, тебе було вбито",
+        "death": "На жаль, тебе вбили",
         "greeting": ("Ласкаво просимо до гри D&D Light\n"
                      "Концепція гри така ж сама, як і в D&D\n"
                      "Гра складається з деякої кількості квестів, які тобі потрібно виконати\n"
-                     "Потім ти переходиш на стадію боса, і це все\n"
+                     "Або ти можеш їх пропустити й насолодитися вечірньою грою, як у старі добрі часи\n"
                      "Досить просто, чи не так?\n"
                      "Тож давай спробуємо цю гру!"),
 
-        "print_player_classes": ("Ось класи, за які ти можеш грати в цій грі:\n"
-                                 "1. Archer\n"
-                                 "2. Wizard\n"
-                                 "3. Gnome\n"
-                                 "4. Ogre\n"
-                                 "5. Knight\n"),
+        "print_player_classes": ("Ось персонажу, за яких ти можеш грати в цій грі:\n"
+                                 "\t1. Archer\n"
+                                 "\t2. Wizard\n"
+                                 "\t3. Gnome\n"
+                                 "\t4. Ogre\n"
+                                 "\t5. Knight\n"),
 
         "print_player_classes_description": ("У кожного персонажа є своя особливість\n"
                                              "1. Archer\n"
@@ -161,11 +169,11 @@ languages = {
                                              "\tТи володієш срібним мечем, яким можеш уражати ворогів з короткої відстані. Здоров'я: {hp_kn}\n"),
 
         "read_player_name": "Як тебе звати? ",
-        "read_player_class": "Яким класом ти хочеш грати? (Введи номер зі списку вище) ",
+        "read_player_class": "Яким персонажем ти хочеш грати? (Введи номер зі списку вище) ",
         "class_choice": {
             "character": "Ось твій персонаж -> ",
-            "accept_or_not?": "Це те, чого ти хотів? (Y/N) ",
-            "not_accept": "\nДобре, тоді почнімо нашу подорож у світ D&D Light!"
+            "accept_or_not?": "Це те, що ти хотів? (Y/N) ",
+            "accept": "\nДобре, тоді почнімо нашу подорож у світ D&D Light!"
         },
 
         "next_thing": {
@@ -185,9 +193,9 @@ languages = {
                              "you say. You think of a few ways of coping with it:\n"
                              "\t1. You can ignore the cave and go ahead the road near the cave.\n"
                              "\t2. Nevertheless you are not aware of what is inside the cave, but \n"
-                             "\tif you sneak inside, take all the valuable and get out of there?\n"
-                             "\t3. Because there might be something that is very dangerous and you\n"
-                             "\tmight start the fight with the mobs")],
+                             "\twhat if you sneak inside, take all the valuable and get out of there?\n"
+                             "\t3. Because there might be something very dangerous you\n"
+                             "\tmight start the fight with the that...")],
 
         "quest_get_option": "Which option would you like to pick? (Enter a number from a list above) ",
 
@@ -195,7 +203,7 @@ languages = {
             "QUEST 1",
             {
                 "fight": {
-                    "kill": "Unfortunately you have been killed",
+                    "kill": "Unfortunately, you have been killed",
                     "success": "It was tough, but you have perfectly fought and won the battle of the Cave"
                 },
 
@@ -224,15 +232,16 @@ languages = {
         "greeting": ("Welcome to the game of D&D Light\n"
                      "The concept of the game is the same as in the D&D\n"
                      "The game consists of some amount of quest that you have to complete\n"
+                     "or you can skip them and enjoy an evening game, just like in the good old days\n"
                      "Pretty simple, isn't it?\n"
                      "So let's try this game out!"),
 
-        "print_player_classes": ("Here are the classes that you can play in this game:\n"
-                                 "1. Archer\n"
-                                 "2. Wizard\n"
-                                 "3. Gnome\n"
-                                 "4. Ogre\n"
-                                 "5. Knight\n"),
+        "print_player_classes": ("Here are the characters that you can play in this game:\n"
+                                 "\t1. Archer\n"
+                                 "\t2. Wizard\n"
+                                 "\t3. Gnome\n"
+                                 "\t4. Ogre\n"
+                                 "\t5. Knight\n"),
 
         "print_player_classes_description": ("Each character has its own speciality\n"
                                              "1. Archer\n"
@@ -251,7 +260,7 @@ languages = {
         "class_choice": {
             "character": "Here is your character -> ",
             "accept_or_not?": "Is that what you wanted? (Y/N) ",
-            "not_accept": "\nAlright, then let's start our journey into the world of D&D Light!"
+            "accept": "\nAlright, then let's start our journey into the world of D&D Light!"
         },
 
         "next_thing": {
@@ -263,25 +272,25 @@ languages = {
         "gen_desc_main_locations": [("Mój drogi przyjacielu, okazałeś się dość odważny, aby tutaj dotrzeć.\n"
                                      "Nasza podróż zaczyna się stąd, mój drogi gościu — od zimnego ogniska.\n"
                                      "Idziesz w stronę nowych przygód i zdążyłeś już odkryć \n"
-                                     "pierwszą z nich. Przed Tobą jaskinia, ale nie jesteś do końca pewien, co \n"
-                                     "jest w środku. Czujesz zainteresowanie jej odkrywaniem, ale jednocześnie dziwne \n"
-                                     "zdezorientowanie tą jaskinią. Próbujesz podejść do niej ostrożnie...")],
+                                     "pierwszą z nich. Przed Tobą jaskinia, ale nie jesteś do końca pewien, co się\n"
+                                     "znajduje w środku. Czujesz zainteresowanie jej odkrywaniem, ale jednocześnie jesteś\n"
+                                     "barzdo zdezorientowany tą jaskinią. Próbujesz ostrożnie do niej podejść...")],
 
         "gen_desc_quests": [("\"Jest tutaj ciemno i słyszę kogoś tam, głęboko w jaskini\", \n"
-                             "mówisz. Myślisz o kilku sposobach poradzenia sobie z tym:\n"
-                             "\t1. Możesz zignorować jaskinię i iść dalej drogą obok niej.\n"
+                             "mówisz. Myślisz o kilku sposobach poradzenia sobie z tą sytuacją:\n"
+                             "\t1. Możesz zignorować jaskinię i pójść dalej drogą obok niej.\n"
                              "\t2. Niemniej jednak nie jesteś świadomy tego, co jest w środku, ale \n"
                              "\tco jeśli wślizgniesz się ukradkiem, zabierzesz wszystko, co cenne i się stamtąd wydostaniesz?\n"
-                             "\t3. Ponieważ może tam być coś bardzo niebezpiecznego i możesz \n"
-                             "\trozpocząć walkę z potworami")],
+                             "\t3. Ponieważ może tam być coś bardzo niebezpiecznego może warto\n"
+                             "\trozpocząć walkę z potworami?")],
 
-        "quest_get_option": " Którą opcję chciałbyś wybrać? (Wprowadź numer z listy powyżej) ",
+        "quest_get_option": "Którą opcję chciałbyś wybrać? (Wprowadź numer z listy powyżej) ",
 
         "quest1": (
             "ZADANIE 1",
             {
                 "fight": {
-                    "kill": "Niestety zostałeś zabity",
+                    "kill": "Niestety Cię zabili",
                     "success": "To było trudne, ale doskonale walczyłeś i wygrałeś bitwę o Jaskinię"
                 },
 
@@ -292,14 +301,17 @@ languages = {
                 },
 
                 "options": {
-                    "1": "Cóż, czasami lepiej pominąć potencjalny problem.\nNiemniej jednak nie otrzymujesz nagrody",
+                    "1": "Cóż, czasami lepiej jest pominąć potencjalny problem\n"
+                         "Niemniej jednak nie otrzymujesz nagrody",
                     "2": {
-                        "successful": "Heeeah! Wślizgnąłeś się ukradkiem do środka i znalazłeś tam coś naprawdę ciekawego",
-                        "fail": "Zostałeś zauważony podczas wślizgiwania się do jaskini.\nWalka się rozpoczęła"
+                        "successful": "Heeeah! Wślizgnąłeś się ukradkiem do środka i znalazłeś tam coś naprawdę ciekawego\n"
+                                      "A konkretniej – diament",
+                        "fail": "Zostałeś zauważony podczas wślizgiwania się do jaskini\n"
+                                "Rozpoczęła się bitwa. Do broni!"
                     },
                     "3": {
                         "successful": "Rozpocząłeś naprawdę okrutną walkę z potworami",
-                        "fail": "Były tam dwa gigantyczne zombie, które, niestety, cię zabiły..."
+                        "fail": "Były tam dwa gigantyczne zombie, które, niestety, Cię zabiły..."
                     }
                 }
             },
@@ -310,16 +322,16 @@ languages = {
         "greeting": ("Witaj w grze D&D Light\n"
                      "Koncepcja gry jest taka sama jak w D&D\n"
                      "Gra składa się z pewnej ilości zadań, które musisz ukończyć\n"
-                     "Następnie wkraczasz w etap bossa i to wszystko\n"
+                     "Albo możesz je pominąć i cieszyć się wieczorną grą, jak za starych dobrych czasów\n"
                      "Całkiem proste, prawda?\n"
                      "Więc wypróbujmy tę grę!"),
 
         "print_player_classes": ("Oto klasy, którymi możesz grać w tej grze:\n"
-                                 "1. Archer\n"
-                                 "2. Wizard\n"
-                                 "3. Gnome\n"
-                                 "4. Ogre\n"
-                                 "5. Knight\n"),
+                                 "\t1. Archer\n"
+                                 "\t2. Wizard\n"
+                                 "\t3. Gnome\n"
+                                 "\t4. Ogre\n"
+                                 "\t5. Knight\n"),
 
         "print_player_classes_description": ("Każda postać ma swoją specjalność\n"
                                              "1. Archer\n"
@@ -338,13 +350,15 @@ languages = {
         "class_choice": {
             "character": "Oto Twoja postać -> ",
             "accept_or_not?": "Czy tego właśnie chciałeś? (Y/N) ",
-            "not_accept": "\nW porządku, w takim razie zacznijmy naszą podróż do świata D&D Light!"
+            "accept": "\nW porządku, w takim razie zacznijmy naszą podróż do świata D&D Light!"
         },
 
         "next_thing": {
             "question": "Czy jesteś gotów iść dalej?: (Y/N) ",
             "additional_time": "W porządku, nie spiesz się, mój drogi gościu"
         },
+
+
         "ua++": {
             "gen_desc_main_locations": [
                 ("МІЙ ДОРОГИЙ ДРУЖЕ, ТИ ПОТУЖНО ВИЯВИВСЯ ДОСИТЬ ХОРОБРИМ, ЩОБ ПОТУЖНО ДІСТАТИСЯ СЮДИ.\n"
@@ -425,7 +439,7 @@ languages = {
             "class_choice": {
                 "character": "ОСЬ ТВІЙ ПЕРСОНАЖ -> ",
                 "accept_or_not?": "ЦЕ ТЕ, ЧОГО ТИ ПОТУЖНО ХОТІВ? (Y/N) ",
-                "not_accept": "\nДОБРЕ, ТОДІ ПОТУЖНО ПОЧНІМО НАШУ ПОДОРОЖ У СВІТ D&D LIGHT!"
+                "accept": "\nДОБРЕ, ТОДІ ПОТУЖНО ПОЧНІМО НАШУ ПОДОРОЖ У СВІТ D&D LIGHT!"
             },
 
             "next_thing": {
